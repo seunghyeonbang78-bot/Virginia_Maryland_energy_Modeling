@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Interactive Model — GridShift
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body data-page="model">
+
+
+<div class="nav-wrap">
+
+  <div class="shell nav">
+
+    <a
+      class="brand"
+      href="index.html"
+    >
+
+      <span class="brand-mark">
+        GS
+      </span>
+
+      GridShift
+
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a href="index.html" data-page="home">
+        Home
+      </a>
+
+      <a href="grid.html" data-page="grid">
+        How the Grid Works
+      </a>
+
+      <a href="virginia.html" data-page="virginia">
+        Virginia
+      </a>
+
+      <a href="maryland.html" data-page="maryland">
+        Maryland
+      </a>
+
+      <a href="model.html" data-page="model">
+        Model
+      </a>
+
+      <a href="sources.html" data-page="sources">
+        Sources
+      </a>
+
+    </nav>
+
+  </div>
+
+</div>
+
+
+<main>
+
+
+<section class="page-hero">
+
+  <div class="shell">
+
+    <p class="kicker">
+      Interactive 24-hour model
+    </p>
+
+    <h1>
+      Watch the grid change by hour.
+    </h1>
+
+    <p>
+
+      Move the slider to compare
+      a simplified Virginia and Maryland
+      demand curve and see how the
+      generation mix might respond
+      through a typical modeled day.
+
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="shell">
+
+
+    <div class="section-head">
+
+      <div>
+
+        <p class="kicker">
+          01 — Demand curve
+        </p>
+
+        <h2>
+          Virginia vs Maryland,
+          hour by hour.
+        </h2>
+
+      </div>
+
+
+      <p>
+
+        This chart uses normalized
+        demand indexes for teaching
+        and modeling.
+
+        It is not metered hourly state data.
+
+      </p>
+
+    </div>
+
+
+    <div class="card chart-card">
+
+
+      <div class="chart-wrap">
+
+        <svg
+          id="demand-svg"
+          aria-label="Hourly demand comparison chart"
+        ></svg>
+
+
+        <div
+          class="tooltip-box"
+          id="chart-tooltip"
+        ></div>
+
+      </div>
+
+
+      <div class="slider-wrap">
+
+
+        <div
+          style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:8px;
+          "
+        >
+
+          <strong>
+            Selected hour
+          </strong>
+
+
+          <span
+            id="hour-readout"
+            class="state-chip"
+          >
+            18:00
+          </span>
+
+        </div>
+
+
+        <input
+          id="hour-slider"
+          type="range"
+          min="0"
+          max="23"
+          value="18"
+          step="1"
+        >
+
+
+        <div class="hour-labels">
+
+          <span>
+            00:00
+          </span>
+
+          <span>
+            06:00
+          </span>
+
+          <span>
+            12:00
+          </span>
+
+          <span>
+            18:00
+          </span>
+
+          <span>
+            23:00
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="shell">
+
+
+    <div class="section-head">
+
+      <div>
+
+        <p class="kicker">
+          02 — Dispatch response
+        </p>
+
+        <h2>
+          Same hour,
+          different mix.
+        </h2>
+
+      </div>
+
+
+      <p>
+
+        The bars below are simplified
+        dispatch indexes.
+
+        They show the logic of the model
+        rather than claiming exact
+        PJM dispatch.
+
+      </p>
+
+    </div>
+
+
+    <div class="dispatch-grid">
+
+
+      <div class="dispatch-card">
+
+
+        <span class="state-chip">
+
+          <span class="dot va"></span>
+
+          Virginia
+
+        </span>
+
+
+        <h3 style="margin-top:12px">
+
+          Modeled supply
+
+        </h3>
+
+
+        <p>
+
+          Higher gas flexibility and
+          faster demand growth make
+          balancing more difficult.
+
+        </p>
+
+
+        <div id="va-dispatch"></div>
+
+
+      </div>
+
+
+      <div class="dispatch-card">
+
+
+        <span class="state-chip">
+
+          <span class="dot md"></span>
+
+          Maryland
+
+        </span>
+
+
+        <h3 style="margin-top:12px">
+
+          Modeled supply
+
+        </h3>
+
+
+        <p>
+
+          Higher nuclear share keeps
+          more of the modeled supply
+          steady across the day.
+
+        </p>
+
+
+        <div id="md-dispatch"></div>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="shell">
+
+
+    <div class="section-head">
+
+      <div>
+
+        <p class="kicker">
+          03 — How to read it
+        </p>
+
+        <h2>
+          What changes through the day?
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="grid-3">
+
+
+      <div class="card">
+
+        <h3>
+          Midday
+        </h3>
+
+        <p>
+
+          Solar rises strongly.
+
+          Storage may charge if
+          low-cost generation exceeds
+          immediate needs.
+
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>
+          Evening
+        </h3>
+
+        <p>
+
+          Solar falls while demand
+          can stay high.
+
+          Gas, hydro, storage discharge,
+          and imports become more important.
+
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>
+          Overnight
+        </h3>
+
+        <p>
+
+          Demand falls,
+          nuclear stays relatively steady,
+          and some storage can recharge.
+
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="shell">
+
+
+    <div class="section-head">
+
+      <div>
+
+        <p class="kicker">
+          04 — Forecast assumptions
+        </p>
+
+        <h2>
+          What the 2035 model assumes.
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="grid-2">
+
+
+      <div class="card">
+
+        <h3>
+          Virginia
+        </h3>
+
+        <p>
+
+          Fast load growth;
+
+          nuclear roughly steady
+          in absolute output;
+
+          strong solar growth;
+
+          offshore wind added;
+
+          coal near zero;
+
+          natural gas remains important
+          for balancing and reliability.
+
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>
+          Maryland
+        </h3>
+
+        <p>
+
+          Slower demand growth;
+
+          Calvert Cliffs remains online
+          in the base case;
+
+          coal declines;
+
+          solar and wind grow;
+
+          imports remain important.
+
+        </p>
+
+      </div>
+
+
+    </div>
+
+
+    <div
+      class="note"
+      style="margin-top:18px"
+    >
+
+      If Calvert Cliffs does not continue
+      operating past its current license period,
+      Maryland's 2035 mix could shift
+      much more heavily toward gas,
+      imports, or additional renewables.
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<footer class="footer">
+
+  <div class="shell">
+
+    <strong>
+      GridShift
+    </strong>
+
+    Virginia vs. Maryland Electricity
+    Modeling Project
+
+  </div>
+
+</footer>
+
+
+<script src="data.js"></script>
+
+
+<script>
+
+const page =
+  document.body.dataset.page;
+
+
+document
+  .querySelectorAll("[data-page]")
+  .forEach(function(link){
+
+    if(
+      link.dataset.page === page
+    ){
+
+      link.classList.add(
+        "active"
+      );
+
+    }
+
+  });
+
+
+initModelPage();
+
+</script>
+
+
+</body>
+
+</html>
